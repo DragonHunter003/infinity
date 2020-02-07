@@ -6,7 +6,10 @@ namespace Infinity.ModSupport.Thorium.Ammo
 	public class EndlessThoriumLilTorpedo : ModItem
 	{
         Mod otherMod = ModLoader.GetMod("ThoriumMod");
-
+        public override bool Autoload(ref string name)
+        {
+            return ModLoader.GetMod("ThoriumMod") != null;
+        }
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Endless Torpedo Crate");

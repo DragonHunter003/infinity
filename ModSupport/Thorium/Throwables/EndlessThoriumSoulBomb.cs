@@ -1,12 +1,15 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Infinity.ModSupport.Thorium.Ammo
+namespace Infinity.ModSupport.Thorium.Throwables 
 {
-	public class EndlessThoriumDeathGripPro : ModItem
+	public class EndlessThoriumSoulBomb : ModItem
 	{
         Mod otherMod = ModLoader.GetMod("ThoriumMod");
-
+        public override bool Autoload(ref string name)
+        {
+            return ModLoader.GetMod("ThoriumMod") != null;
+        }
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Endless Soul Bomb Pouch");
@@ -17,7 +20,7 @@ namespace Infinity.ModSupport.Thorium.Ammo
         {
             if (otherMod != null)
             {
-                item.CloneDefaults(otherMod.ItemType("DeathGripPro"));
+                item.CloneDefaults(otherMod.ItemType("SoulBomb"));
                 item.consumable = false;               
                 item.maxStack = 1;
             }
@@ -28,7 +31,7 @@ namespace Infinity.ModSupport.Thorium.Ammo
             if (otherMod != null)
             {
                 ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(otherMod.ItemType("DeathGripPro"), 3996);
+                recipe.AddIngredient(otherMod.ItemType("SoulBomb"), 3996);
                 recipe.AddTile(TileID.Anvils);
                 recipe.SetResult(this);
                 recipe.AddRecipe();

@@ -19,7 +19,8 @@ namespace Infinity
 				AutoloadSounds = true
 			};
 		}
-
+        internal bool thoriumLoaded;
+        internal static Infinity instance;
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(this);
@@ -33,6 +34,12 @@ namespace Infinity
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(ItemID.EndlessQuiver);
             recipe.AddRecipe();
+        }
+
+        public override void Load()
+        {
+            instance = this;
+            thoriumLoaded = ModLoader.GetMod("ThoriumMod") != null;     
         }
     }
 }

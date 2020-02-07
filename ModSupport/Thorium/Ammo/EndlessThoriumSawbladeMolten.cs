@@ -6,7 +6,10 @@ namespace Infinity.ModSupport.Thorium.Ammo
 	public class EndlessThoriumSawbladeMolten : ModItem
 	{
         Mod otherMod = ModLoader.GetMod("ThoriumMod");
-
+        public override bool Autoload(ref string name)
+        {
+            return ModLoader.GetMod("ThoriumMod") != null;
+        }
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Molten Sawblade Munitions Crate");

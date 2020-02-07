@@ -2,11 +2,14 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Infinity.ModSupport.Thorium.Throwables
-{
+{ 
 	public class EndlessThoriumCombustionFlask : ModItem
 	{
         Mod otherMod = ModLoader.GetMod("ThoriumMod");
-
+        public override bool Autoload(ref string name)
+        {
+            return ModLoader.GetMod("ThoriumMod") != null;
+        }
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Endless Combustion Flask");

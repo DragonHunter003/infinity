@@ -6,17 +6,20 @@ namespace Infinity.ModSupport.Thorium.Throwables
 	public class EndlessThoriumOceanThrowingAxe : ModItem
 	{
         Mod otherMod = ModLoader.GetMod("ThoriumMod");
-
+        public override bool Autoload(ref string name)
+        {
+            return ModLoader.GetMod("ThoriumMod") != null;
+        }
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Endless Ocean Throwing Axe");
+            DisplayName.SetDefault("Endless Ocean Tomahawk");
         }
 
         public override void SetDefaults()
         {
             if (otherMod != null)
             {
-                item.CloneDefaults(otherMod.ItemType("OceanThrowingAxe"));
+                item.CloneDefaults(otherMod.ItemType("OceanTomahawk"));
                 item.consumable = false;               
                 item.maxStack = 1;
             }
@@ -27,7 +30,7 @@ namespace Infinity.ModSupport.Thorium.Throwables
             if (otherMod != null)
             {
                 ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(otherMod.ItemType("OceanThrowingAxe"), 999);
+                recipe.AddIngredient(otherMod.ItemType("OceanTomahawk"), 999);
                 recipe.AddTile(TileID.Anvils);
                 recipe.SetResult(this);
                 recipe.AddRecipe();
